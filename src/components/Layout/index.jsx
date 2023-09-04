@@ -5,7 +5,7 @@ import Footer from "../Footer";
 
 function Layout() {
   return (
-    <div>
+    <div className="d-flex row vh-100">
       <Header />
       <Outlet />
       <Footer />

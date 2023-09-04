@@ -2,20 +2,23 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import Container from "react-bootstrap/Container";
+import { Stack } from "react-bootstrap";
 
 function Header() {
   return (
-    <header className="mb-5">
-      <Navbar bg="light" className="py-3 shadow-sm" variant="light">
-        <Container>
+    <header className="">
+      <Navbar bg="light" className="py-3 shadow" variant="light">
+        <Stack direction="horizontal" className="mx-auto col-10 justify-content-between">
           <Navbar.Brand>LOGO</Navbar.Brand>
-          <Nav className="me-auto">
-            <Link className="mx-1 text-decoration-none text-dark btn btn-primary" to="/login">
+          <Nav>
+            <Link className="text-decoration-none text-primary btn px-4" to="/register">
+              Register
+            </Link>
+            <Link className="text-decoration-none text-dark btn btn-primary btn-rounded" to="/login">
               Log in
             </Link>
           </Nav>
-        </Container>
+        </Stack>
       </Navbar>
     </header>
   );
