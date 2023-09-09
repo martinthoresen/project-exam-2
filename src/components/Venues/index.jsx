@@ -12,7 +12,7 @@ function Venues() {
           </Col>
         </Row>
       </Container>
-      <Container className="d-flex justify-content-center flex-column col-md-6">
+      <Container className="d-flex justify-content-center flex-column col-md-6 my-5">
         <h2>Curated Venues</h2>
         <Row>
           <Col md>
@@ -85,7 +85,7 @@ function Venues() {
           </Col>
         </Row>
       </Container>
-      <Container fluid className="bg-primary py-4">
+      <Container fluid className="bg-primary py-4 my-5">
         <h1 className="text-white text-center">Browse All Venues</h1>
       </Container>
     </div>
