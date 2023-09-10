@@ -4,6 +4,7 @@ import "./App.css";
 import Layout from "./components/Layout";
 import Venues from "./components/Venues";
 import RouteNotFound from "./components/RouteNotFound";
+import Register from "./components/Register";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Venues />} />
+          <Route path="/register" element={<Register />} />
           <Route path="*" element={<RouteNotFound />} />
         </Route>
       </Routes>
