@@ -5,6 +5,7 @@ import Layout from "./components/Layout";
 import Venues from "./components/Venues";
 import RouteNotFound from "./components/RouteNotFound";
 import Register from "./components/Register";
+import Login from "./components/Login";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Venues />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
           <Route path="*" element={<RouteNotFound />} />
         </Route>
       </Routes>

@@ -4,6 +4,7 @@ import { Form, Button } from "react-bootstrap";
 function Register() {
   return (
     <div className="m-auto col-6 col-lg-3">
+      <h1 className="text-center">Register an Account</h1>
       <Form>
         <Form.Group className="mb-3" controlId="Name">
           <Form.Label>Username</Form.Label>
@@ -21,7 +22,7 @@ function Register() {
           <Form.Check type="checkbox" label="Register as venue manager" />
         </Form.Group>
         <Button variant="primary" type="submit" className="w-100">
-          Submit
+          Register
         </Button>
       </Form>
     </div>

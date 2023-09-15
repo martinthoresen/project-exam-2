@@ -9,7 +9,11 @@ function Header() {
     <header className="">
       <Navbar bg="light" className="py-3 shadow" variant="light">
         <Stack direction="horizontal" className="mx-auto col-10 justify-content-between">
-          <Navbar.Brand>LOGO</Navbar.Brand>
+          <Navbar.Brand>
+            <Link to="/">
+              <img src={"/public/images/holidaze_logo.svg"} alt="" className="" />
+            </Link>
+          </Navbar.Brand>
           <Nav>
             <Link className="text-decoration-none text-primary btn px-4" to="/register">
               Register
