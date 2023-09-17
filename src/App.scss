@@ -3,4 +3,9 @@ $theme-colors: (
   "secondary": #45386f,
 );
 
+.navbar-logo {
+  height: 2rem;
+  vertical-align: baseline;
+}
+
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
