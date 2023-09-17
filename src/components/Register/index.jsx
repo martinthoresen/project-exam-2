@@ -1,30 +1,65 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
+const schema = yup
+  .object({
+    name: yup.string().required("Please enter a username."),
+    email: yup.string().email("Please enter a valid noroff email.").required("Please enter your email."),
+    password: yup.string().min(8, "Must be 8 or more characters.").required("Please enter a valid password."),
+    avatar: yup.string().url("Please enter a valid url"),
+    venueManager: yup.boolean().default(false),
+  })
+  .required();
 
 function Register() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+
+  function onSubmit(data) {
+    console.log(data);
+  }
   return (
-    <div className="m-auto col-6 col-lg-3">
-      <h1 className="text-center">Register an Account</h1>
-      <Form>
-        <Form.Group className="mb-3" controlId="Name">
-          <Form.Label>Username</Form.Label>
-          <Form.Control type="text" placeholder="Must be at least 5 characters." />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="Email">
-          <Form.Label>Email</Form.Label>
-          <Form.Control type="email" placeholder="Must be a valid Noroff email." />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Please enter a secure password." />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Register as venue manager" />
-        </Form.Group>
-        <Button variant="primary" type="submit" className="w-100">
-          Register
-        </Button>
-      </Form>
+    <div className="m-auto col-6 col-lg-3 py-5">
+      <img src="/images/holidaze_logo.svg" alt="" className="mb-4" />
+      <main>
+        <h1 className="text-center">Register an Account</h1>
+        <Form onSubmit={handleSubmit(onSubmit)}>
+          <Form.Group className="mb-3">
+            <Form.Label>Username</Form.Label>
+            <Form.Control {...register("name")} />
+            <p className="text-danger">{errors.name?.message}</p>
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Email</Form.Label>
+            <Form.Control {...register("email")} />
+            <p className="text-danger">{errors.email?.message}</p>
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Password</Form.Label>
+            <Form.Control {...register("password")} />
+            <p className="text-danger">{errors.password?.message}</p>
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Avatar</Form.Label>
+            <Form.Control {...register("avatar")} />
+            <p className="text-danger">{errors.avatar?.message}</p>
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Check {...register("venueManager")} type="checkbox" label="Register as venue manager" />
+          </Form.Group>
+          <Button variant="primary" type="submit" className="w-100">
+            Register
+          </Button>
+        </Form>
+      </main>
     </div>
   );
 }
