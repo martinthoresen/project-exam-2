@@ -1,14 +1,17 @@
+import baseUrl from "../../utility/constants/baseUrl";
+import registerUser from "../../auth/registerUser";
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+const NOROFF_REGEX = "noroff.no";
 
 const schema = yup
   .object({
     name: yup.string().required("Please enter a username."),
-    email: yup.string().email("Please enter a valid noroff email.").required("Please enter your email."),
-    password: yup.string().min(8, "Must be 8 or more characters.").required("Please enter a valid password."),
+    email: yup.string().email("Must be a valid Noroff email.").matches(NOROFF_REGEX, "Must be a valid Noroff email.").required("Please enter your email."),
+    password: yup.string().min(8, "Must be 8 or more characters.").required("Please enter a password."),
     avatar: yup.string().url("Please enter a valid url"),
     venueManager: yup.boolean().default(false),
   })
@@ -25,6 +28,7 @@ function Register() {
 
   function onSubmit(data) {
     console.log(data);
+    registerUser(baseUrl + "/holidaze/auth/register", data);
   }
   return (
     <div className="m-auto col-6 col-lg-3 py-5">
@@ -40,7 +44,7 @@ function Register() {
           <Form.Group className="mb-3">
             <Form.Label>Email</Form.Label>
             <Form.Control {...register("email")} />
-            <p className="text-danger">{errors.email?.message}</p>
+            <p className="text-warning">{errors.email?.message}</p>
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Password</Form.Label>
