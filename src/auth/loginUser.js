@@ -2,7 +2,6 @@ import { saveKey } from "../storage/localStorage.js";
 import { displayMessage } from "../utility/displayMessage.js";
 import baseUrl from "../utility/constants/baseUrl.js";
 export const loginUrl = `${baseUrl}/holidaze/auth/login`;
-const loginContainer = document.querySelector("#login-container");
 
 async function loginUser(url, data) {
   try {
@@ -15,7 +14,7 @@ async function loginUser(url, data) {
     };
     const response = await fetch(url, postData);
     const json = await response.json();
-
+    const loginContainer = document.querySelector("#login-container");
     if (response.ok === true) {
       const accessToken = json.accessToken;
       saveKey("accessToken", accessToken);
