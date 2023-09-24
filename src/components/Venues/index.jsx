@@ -1,13 +1,12 @@
 import React from "react";
 import baseUrl from "../../utility/constants/baseUrl";
 import useApi from "../../hooks/useApi";
-import { Container, Row, Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Container, Row, Col, Card } from "react-bootstrap";
 
 function Venues() {
   const { data, isLoading, isError } = useApi(baseUrl + "/holidaze/venues");
   const venues = data;
-
+  console.log(venues);
   if (isLoading) {
     return "Loading...";
   }
@@ -37,15 +36,14 @@ function Venues() {
         </Container>
         <Container>
           {venues.map((venue) => (
-            <Col key={"venue_" + venue.id} className="col-12 col-sm-4 col-md-3 my-1">
-              <div className="d-flex p-1">
-                <Link to={"/venue/" + venue.id} className="text-decoration-none text-dark ">
-                  <img src={venue.imageUrl} alt={venue.title} className="product-image"></img>
-                  <h2>{venue.title}</h2>
-                  <p className="text-secondary text-decoration-underline">View Venue</p>
-                </Link>
-              </div>
-            </Col>
+            <Card>
+              <Card.Body>
+                <Card.Img variant="top" src={venue.media} />
+                <Card.Title>{venue.name}</Card.Title>
+                <Card.Subtitle className="mb-2 text-muted">{venue.price}</Card.Subtitle>
+                <Card.Text>{venue.name}</Card.Text>
+              </Card.Body>
+            </Card>
           ))}
         </Container>
       </main>
