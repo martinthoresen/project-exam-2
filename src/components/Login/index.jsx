@@ -46,7 +46,7 @@ function Login() {
           <Button variant="primary" type="submit" className="w-100">
             Log in
           </Button>
-          <p id="login-container"></p>
+          <div id="login-container"></div>
         </Form>
       </main>
     </div>
