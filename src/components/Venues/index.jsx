@@ -20,7 +20,7 @@ function Venues() {
         <Row>
           <Col className=" col-md-6 text-center m-auto text-white">
             <h2>Need a breath of fresh air?</h2>
-            <p className="">We all do from time to time. Thats why our focus is channeled towards giving you the best experience as possible, either you’re looking for a relaxing beach holiday, or a city break.</p>
+            <p>We all do from time to time. Thats why our focus is channeled towards giving you the best experience as possible, either you’re looking for a relaxing beach holiday, or a city break.</p>
           </Col>
         </Row>
       </Container>
