@@ -2,8 +2,9 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { NavDropdown, Stack } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { CheckIfLoggedIn } from "../../utility/checkIfLoggedIn";
+import LogoutPrompt from "./LogoutPrompt";
 
 function Header() {
   let location = useLocation();
@@ -12,16 +13,11 @@ function Header() {
   let isLoggedIn = CheckIfLoggedIn();
   if (isLoggedIn) {
     loggedInNav = (
-      <Nav className="d-flex flex-wrap">
-        <NavDropdown title="Menu" className="">
-          <NavDropdown.Item href="#action/3.1">Profile</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.2">Manage Venues</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.3">Bookings</NavDropdown.Item>
-          <NavDropdown.Divider />
-          <NavDropdown.Item href="#action/3.4" className="text-danger">
-            Log Out
-          </NavDropdown.Item>
-        </NavDropdown>
+      <Nav className="ms-auto">
+        <Nav.Link href="/profile">Profile</Nav.Link>
+        <Nav.Link href="/profile/bookings">Your Bookings</Nav.Link>
+        <Nav.Link href="/profile/manage">Manage Venues</Nav.Link>
+        {LogoutPrompt()}
       </Nav>
     );
   } else {
@@ -48,15 +44,17 @@ function Header() {
       </Link>
     );
   }
+
   return (
-    <header className="">
-      <Navbar bg="light" className="py-3 shadow" variant="light">
-        <Stack direction="horizontal" className="mx-auto col-10 justify-content-between">
+    <header>
+      <Navbar collapseOnSelect expand="md" className="bg-body-white py-3 shadow">
+        <Container>
           <Navbar.Brand href="/">
             <img src="/images/holidaze_logo.svg" alt="" className="navbar-logo" />
           </Navbar.Brand>
-          {loggedInNav}
-        </Stack>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">{loggedInNav}</Navbar.Collapse>
+        </Container>
       </Navbar>
     </header>
   );
