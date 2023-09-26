@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { Container } from "react-bootstrap";
+import { Container, NavDropdown } from "react-bootstrap";
 import { CheckIfLoggedIn } from "../../utility/checkIfLoggedIn";
 import LogoutPrompt from "./LogoutPrompt";
 
@@ -50,7 +50,7 @@ function Header() {
       <Navbar collapseOnSelect expand="md" className="bg-body-white py-3 shadow">
         <Container>
           <Navbar.Brand href="/">
-            <img src="/images/holidaze_logo.svg" alt="" className="navbar-logo" />
+            <img src="/images/holidaze_logo.png" alt="" className="navbar-logo" />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">{loggedInNav}</Navbar.Collapse>
