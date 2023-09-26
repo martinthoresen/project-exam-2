@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Container } from "react-bootstrap";
+import { Card, Col, Container, Row } from "react-bootstrap";
 import useApi from "../../../hooks/useApi";
 import baseUrl from "../../../utility/constants/baseUrl";
 
@@ -16,16 +16,20 @@ function RenderVenues() {
   }
   return (
     <Container>
-      {venues.map((venue) => (
-        <Card>
-          <Card.Body>
-            <Card.Img variant="top" src={venue.media} />
-            <Card.Title>{venue.name}</Card.Title>
-            <Card.Subtitle className="mb-2 text-muted">{venue.price}</Card.Subtitle>
-            <Card.Text>{venue.name}</Card.Text>
-          </Card.Body>
-        </Card>
-      ))}
+      <Row>
+        {venues.map((venue) => (
+          <Col className="col-12 col-sm-6 col-lg-3">
+            <Card className="border-0">
+              <Card.Body>
+                <Card.Img variant="top" src={venue.media} className="rounded card-img" onError={(event) => (event.target.src = "/images/no-image.jpg")} />
+                <Card.Title>{venue.name}</Card.Title>
+                <Card.Subtitle className="mb-2 text-muted">{venue.price}</Card.Subtitle>
+                <Card.Text>{venue.name}</Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
+        ))}
+      </Row>
     </Container>
   );
 }
