@@ -25,8 +25,8 @@ function Venues() {
         <Container fluid className="bg-primary py-4 my-5">
           <h1 className="text-white text-center">All Venues</h1>
         </Container>
-        {VenueFilters()}
-        <Container>{RenderVenues()}</Container>
+        <Container>{VenueFilters()}</Container>
+        {RenderVenues()}
       </main>
     </div>
   );
