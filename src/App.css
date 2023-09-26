@@ -8,6 +8,12 @@
   color: #45386f;
 }
 
+.card-img {
+  height: 15rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 /*!
  * Bootstrap  v5.3.1 (https://getbootstrap.com/)
  * Copyright 2011-2023 The Bootstrap Authors
