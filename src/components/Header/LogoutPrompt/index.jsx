@@ -14,7 +14,7 @@ function LogoutPrompt() {
         Log Out
       </Button>
 
-      <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
+      <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false} className="border-0">
         <Modal.Header closeButton>
           <Modal.Title>Log Out</Modal.Title>
         </Modal.Header>
