@@ -1,19 +1,10 @@
 import React from "react";
-import baseUrl from "../../utility/constants/baseUrl";
-import useApi from "../../hooks/useApi";
-import { Container, Row, Col, Card } from "react-bootstrap";
+
+import { Container, Row, Col } from "react-bootstrap";
+import VenueFilters from "./VenueFilters";
+import RenderVenues from "./RenderVenues";
 
 function Venues() {
-  const { data, isLoading, isError } = useApi(baseUrl + "/holidaze/venues");
-  const venues = data;
-  console.log(venues);
-  if (isLoading) {
-    return "Loading...";
-  }
-
-  if (isError) {
-    return <div>There was en error loading the API.</div>;
-  }
   return (
     <div>
       <Container fluid className="bg-primary py-4">
@@ -32,20 +23,10 @@ function Venues() {
       </Container>
       <main>
         <Container fluid className="bg-primary py-4 my-5">
-          <h1 className="text-white text-center">Browse All Venues</h1>
+          <h1 className="text-white text-center">All Venues</h1>
         </Container>
-        <Container>
-          {venues.map((venue) => (
-            <Card>
-              <Card.Body>
-                <Card.Img variant="top" src={venue.media} />
-                <Card.Title>{venue.name}</Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">{venue.price}</Card.Subtitle>
-                <Card.Text>{venue.name}</Card.Text>
-              </Card.Body>
-            </Card>
-          ))}
-        </Container>
+        {VenueFilters()}
+        <Container>{RenderVenues()}</Container>
       </main>
     </div>
   );
