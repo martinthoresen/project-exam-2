@@ -18,4 +18,9 @@ $theme-colors: (
   color: #45386f;
 }
 
+.card-img {
+  height: 15rem;
+  object-fit: cover;
+}
+
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
