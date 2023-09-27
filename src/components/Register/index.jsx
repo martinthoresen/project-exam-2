@@ -44,7 +44,7 @@ function Register() {
           <Form.Group className="mb-3">
             <Form.Label>Email</Form.Label>
             <Form.Control {...register("email")} />
-            <p className="text-warning">{errors.email?.message}</p>
+            <p className="text-danger">{errors.email?.message}</p>
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Password</Form.Label>

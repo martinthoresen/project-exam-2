@@ -36,12 +36,12 @@ function Login() {
           <Form.Group className="mb-3" controlId="Email">
             <Form.Label>Email</Form.Label>
             <Form.Control type="email" placeholder="" {...register("email")} />
-            <p className="text-warning">{errors.email?.message}</p>
+            <p className="text-danger">{errors.email?.message}</p>
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
             <Form.Control type="password" placeholder="" {...register("password")} />
-            <p className="text-warning">{errors.password?.message}</p>
+            <p className="text-danger">{errors.password?.message}</p>
           </Form.Group>
           <Button variant="primary" type="submit" className="w-100">
             Log in
