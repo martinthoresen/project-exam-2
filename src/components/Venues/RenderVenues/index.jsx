@@ -19,14 +19,20 @@ function RenderVenues() {
       <Row>
         {venues.map((venue) => (
           <Col className="col-12 col-sm-6 col-lg-3">
-            <Card className="border-0">
-              <Card.Body>
-                <Card.Img variant="top" src={venue.media} className="rounded card-img" onError={(event) => (event.target.src = "/images/no-image.jpg")} />
-                <Card.Title>{venue.name}</Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">{venue.price}</Card.Subtitle>
-                <Card.Text>{venue.name}</Card.Text>
-              </Card.Body>
-            </Card>
+            <a href="/" className="text-decoration-none">
+              <Card className="border-0 shadow-sm mb-3 rounded">
+                <Card.Body>
+                  <Card.Img variant="top" src={venue.media} className="rounded card-img" onError={(event) => (event.target.src = "/images/no-image.jpg")} />
+                  <Card.Title>{venue.name}</Card.Title>
+                  <Card.Subtitle className="mb-2 text-primary">
+                    ${venue.price} <span className="text-muted small">/night</span>
+                  </Card.Subtitle>
+                  <Card.Text className="text-end text-muted">
+                    Rating: <span className="text-primary">{venue.rating}</span>
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            </a>
           </Col>
         ))}
       </Row>

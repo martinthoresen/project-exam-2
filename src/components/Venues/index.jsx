@@ -7,7 +7,7 @@ import RenderVenues from "./RenderVenues";
 function Venues() {
   return (
     <div>
-      <Container fluid className="bg-primary py-4">
+      <Container fluid className="bg-primary  py-4">
         <Row>
           <Col className=" col-md-6 text-center m-auto text-white">
             <h2>Need a breath of fresh air?</h2>
@@ -22,7 +22,7 @@ function Venues() {
         </Row>
       </Container>
       <main>
-        <Container fluid className="bg-primary py-4 my-5">
+        <Container fluid className="bg-primary bg-gradient py-4 my-5">
           <h1 className="text-white text-center">All Venues</h1>
         </Container>
         <Container>{VenueFilters()}</Container>
