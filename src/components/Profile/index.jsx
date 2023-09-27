@@ -1,7 +1,14 @@
 import React from "react";
 import { Col, Container, Nav, Navbar, Row, Stack } from "react-bootstrap";
+import useApi from "../../hooks/useApi";
+import baseUrl from "../../utility/constants/baseUrl";
+import { loadKey } from "../../storage/localStorage";
 
 function Profile() {
+  const userCreds = loadKey("data");
+  const userName = userCreds["name"];
+  const userData = useApi(baseUrl + `/holidaze/profiles/${userName}`);
+  console.log(userData.data);
   return (
     <div>
       <Row>
@@ -9,7 +16,7 @@ function Profile() {
           <Container className="my-5 text-center">
             <img src="" alt="" srcset="" />
             <div>
-              <p>USERNAME</p>
+              <p>{userData.data.name}</p>
               <p>Venue Manager</p>
             </div>
           </Container>
