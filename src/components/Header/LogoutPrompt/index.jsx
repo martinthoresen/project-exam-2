@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { clearStorage } from "../../../storage/localStorage";
 
 function LogoutPrompt() {
   const [show, setShow] = useState(false);
@@ -8,6 +9,10 @@ function LogoutPrompt() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  function logoutUser() {
+    clearStorage();
+    window.location.replace("/login");
+  }
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
@@ -23,7 +28,9 @@ function LogoutPrompt() {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="danger">Log out</Button>
+          <Button variant="danger" id="logout-button" onClick={logoutUser()}>
+            Log out
+          </Button>
         </Modal.Footer>
       </Modal>
     </>
