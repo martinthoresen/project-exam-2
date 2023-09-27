@@ -29,7 +29,7 @@ function Login() {
 
   return (
     <div className="m-auto col-6 col-lg-3">
-      <img src="/images/holidaze_logo.svg" alt="" className="mb-4" />
+      <img src="/images/holidaze_logo.png" alt="" className="w-75 d-block m-auto mb-4" />
       <main>
         <h1 className="text-center">Log In</h1>
         <Form onSubmit={handleSubmit(onSubmit)}>
