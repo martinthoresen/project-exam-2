@@ -19,5 +19,5 @@ export function removeKey(key) {
 }
 
 export function clearStorage() {
-  return JSON.parse(localStorage.clear());
+  return localStorage.clear();
 }
