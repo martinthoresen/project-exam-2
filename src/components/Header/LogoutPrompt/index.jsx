@@ -12,7 +12,7 @@ function LogoutPrompt() {
   const handleLogout = () => logoutUser();
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button variant="outline-danger" onClick={handleShow}>
         Log Out
       </Button>
 
