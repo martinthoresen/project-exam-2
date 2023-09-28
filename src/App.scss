@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Hind&family=Montserrat&display=swap");
+
 $theme-colors: (
   "primary": #6355b3,
   "secondary": #45386f,
@@ -21,6 +23,18 @@ $theme-colors: (
 .card-img {
   height: 15rem;
   object-fit: cover;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Montserrat", sans-serif;
+}
+
+p,
+label,
+a {
+  font-family: "Hind", sans-serif;
 }
 
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
