@@ -28,9 +28,9 @@ function Header() {
   if (isLoggedIn) {
     loggedInNav = (
       <Nav className="ms-auto">
-        <Nav.Link href="/profile">Profile</Nav.Link>
-        <Nav.Link href="/profile/bookings">Your Bookings</Nav.Link>
-        <Nav.Link href="/profile/manage">Manage Venues</Nav.Link>
+        <Nav.Link href="/profile" className="me-3">
+          Profile
+        </Nav.Link>
         <LogoutPrompt />
       </Nav>
     );
