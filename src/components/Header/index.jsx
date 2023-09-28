@@ -31,7 +31,7 @@ function Header() {
         <Nav.Link href="/profile">Profile</Nav.Link>
         <Nav.Link href="/profile/bookings">Your Bookings</Nav.Link>
         <Nav.Link href="/profile/manage">Manage Venues</Nav.Link>
-        {LogoutPrompt()}
+        <LogoutPrompt />
       </Nav>
     );
   } else {

@@ -1,12 +1,13 @@
 import React from "react";
-
 import { Container, Row, Col } from "react-bootstrap";
 import VenueFilters from "./VenueFilters";
 import RenderVenues from "./RenderVenues";
+import { Helmet } from "react-helmet";
 
 function Venues() {
   return (
     <div>
+      <Helmet title="Home | Holidaze" />
       <Container fluid className="bg-primary  py-4">
         <Row>
           <Col className=" col-md-6 text-center m-auto text-white">
@@ -25,8 +26,10 @@ function Venues() {
         <Container fluid className="bg-primary bg-gradient py-4 my-5">
           <h1 className="text-white text-center">All Venues</h1>
         </Container>
-        <Container>{VenueFilters()}</Container>
-        {RenderVenues()}
+        <Container>
+          <VenueFilters />
+        </Container>
+        <RenderVenues />
       </main>
     </div>
   );
