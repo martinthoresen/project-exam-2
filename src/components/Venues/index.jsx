@@ -6,32 +6,16 @@ import { Helmet } from "react-helmet";
 
 function Venues() {
   return (
-    <div>
+    <main>
       <Helmet title="Home | Holidaze" />
-      <Container fluid className="bg-primary  py-4">
-        <Row>
-          <Col className=" col-md-6 text-center m-auto text-white">
-            <h2>Need a breath of fresh air?</h2>
-            <p>We all do from time to time. Thats why our focus is channeled towards giving you the best experience as possible, either you’re looking for a relaxing beach holiday, or a city break.</p>
-          </Col>
-        </Row>
+      <Container fluid className="bg-secondary bg-gradient py-5 mb-5">
+        <h1 className="text-white text-center">Browse Venues</h1>
       </Container>
-      <Container className="d-flex justify-content-center flex-column col-md-6 my-5">
-        <h2>Curated Venues</h2>
-        <Row>
-          <Col md></Col>
-        </Row>
+      <Container>
+        <VenueFilters />
       </Container>
-      <main>
-        <Container fluid className="bg-primary bg-gradient py-4 my-5">
-          <h1 className="text-white text-center">All Venues</h1>
-        </Container>
-        <Container>
-          <VenueFilters />
-        </Container>
-        <RenderVenues />
-      </main>
-    </div>
+      <RenderVenues />
+    </main>
   );
 }
 
