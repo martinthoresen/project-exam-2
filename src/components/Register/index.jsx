@@ -5,6 +5,7 @@ import { Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { Helmet } from "react-helmet";
 const NOROFF_REGEX = "noroff.no";
 
 const schema = yup
@@ -32,6 +33,7 @@ function Register() {
   }
   return (
     <div className="m-auto col-6 col-lg-3 py-5">
+      <Helmet title="Register | Holidaze" />
       <img src="/images/holidaze_logo.png" alt="" className="w-75 d-block m-auto mb-4" />
       <main>
         <h1 className="text-center">Register an Account</h1>

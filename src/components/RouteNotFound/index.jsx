@@ -1,10 +1,12 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 
 function RouteNotFound() {
   return (
     <Container className="m-auto">
+      <Helmet title="Not Found | Holidaze" />
       <Col>
         <Row>
           <h1 className="text-center">Error</h1>

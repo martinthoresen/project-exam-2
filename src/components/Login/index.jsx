@@ -5,6 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import baseUrl from "../../utility/constants/baseUrl";
+import { Helmet } from "react-helmet";
 
 const schema = yup
   .object({
@@ -29,6 +30,7 @@ function Login() {
 
   return (
     <div className="m-auto col-6 col-lg-3">
+      <Helmet title="Log in | Holidaze" />
       <img src="/images/holidaze_logo.png" alt="" className="w-75 d-block m-auto mb-4" />
       <main>
         <h1 className="text-center">Log In</h1>

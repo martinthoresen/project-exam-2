@@ -3,6 +3,7 @@ import { Col, Container, Nav, Navbar, Row, Stack } from "react-bootstrap";
 import useApi from "../../hooks/useApi";
 import baseUrl from "../../utility/constants/baseUrl";
 import { loadKey } from "../../storage/localStorage";
+import { Helmet } from "react-helmet";
 
 function Profile() {
   const userCreds = loadKey("data");
@@ -11,6 +12,7 @@ function Profile() {
   console.log(userData.data);
   return (
     <div>
+      <Helmet title="Profile | Holidaze" />
       <Row>
         <Col>
           <Container className="my-5 text-center">
