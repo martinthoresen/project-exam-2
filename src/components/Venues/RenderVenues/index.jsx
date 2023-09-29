@@ -1,24 +1,28 @@
 import React from "react";
-import { Card, Col, Container, Row } from "react-bootstrap";
+import { Button, Card, Col, Container, Placeholder, Row } from "react-bootstrap";
 import useApi from "../../../hooks/useApi";
 import baseUrl from "../../../utility/constants/baseUrl";
 
 function RenderVenues() {
-  const { data, isLoading, isError } = useApi(baseUrl + "/holidaze/venues");
+  let limit = 24;
+  let offset = 0;
+  const { data, isLoading, isError } = useApi(baseUrl + `/holidaze/venues?limit=${limit}&offset=${offset}`);
+
   const venues = data;
-  console.log(venues);
+
   if (isLoading) {
-    return "Loading...";
+    return <Col></Col>;
   }
 
   if (isError) {
     return <div>There was en error loading the API.</div>;
   }
+
   return (
     <Container>
       <Row>
         {venues.map((venue) => (
-          <Col className="col-12 col-sm-6 col-lg-3">
+          <Col className="col-12 col-sm-6 col-lg-3" key={venue.id}>
             <a href="/" className="text-decoration-none">
               <Card className="border-0 shadow-sm mb-3 rounded">
                 <Card.Body>
@@ -27,15 +31,19 @@ function RenderVenues() {
                   <Card.Subtitle className="mb-2 text-primary">
                     ${venue.price} <span className="text-muted small">/night</span>
                   </Card.Subtitle>
-                  <Card.Text className="text-end text-muted">
-                    Rating: <span className="text-primary">{venue.rating}</span>
-                  </Card.Text>
+                  <div className="d-flex justify-content-between align-items-end">
+                    <Button variant="outline-primary">View</Button>
+                    <Card.Text className=" text-muted">
+                      Rating: <span className="text-primary">{venue.rating}</span>
+                    </Card.Text>
+                  </div>
                 </Card.Body>
               </Card>
             </a>
           </Col>
         ))}
       </Row>
+      <Button onClick={showMorePages}>Load More...</Button>
     </Container>
   );
 }
