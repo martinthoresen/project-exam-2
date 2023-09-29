@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Card, CardImg, Col, Container, Nav, Navbar, Row, Stack } from "react-bootstrap";
+import { Button, Col, Container, Image, Nav, Navbar, Row, Stack } from "react-bootstrap";
 import useApi from "../../hooks/useApi";
 import baseUrl from "../../utility/constants/baseUrl";
 import { loadKey } from "../../storage/localStorage";
@@ -20,38 +20,37 @@ function Profile() {
 
   if (userData.data.venueManager) {
     VenueManager = (
-      <p>
+      <p className="bg-secondary text-white rounded p-1 d-inline-block">
         <FontAwesomeIcon icon={faKey} className="me-2" />
         Venue Manager
       </p>
     );
   }
 
+  console.log(userData);
   return (
-    <Container className="m-auto">
+    <Container className="m-auto ">
       <Helmet title="Profile | Holidaze" />
       <Row>
-        <Col>
-          <Card className="text-center border-0">
-            <CardImg variant="top" src={userData.data.avatar} className="w-25 m-auto" alt="" srcset="" onError={(event) => (event.target.src = "/images/no-image.jpg")} />
-            <div className="my-3 m-auto">
-              <p>{userData.data.name}</p>
-              <p className="bg-secondary text-white rounded p-1">{VenueManager}</p>
-            </div>
-          </Card>
+        <Col className="text-center">
+          <Image roundedCircle fluid src={userData.data.avatar} className="w-25 my-auto" alt="" srcset="" onError={(event) => (event.target.src = "/images/no-image.jpg")} />
+          <p className="my-2">{userData.data.name}</p>
+          {VenueManager}
         </Col>
-        <Container className="bg-secondary">
-          <hr className="" />
-        </Container>
-        <Navbar bg="light" className="shadow p-0" variant="light">
+      </Row>
+      <Row>
+        <Navbar className="shadow p-0 rounded" variant="light">
           <Stack direction="horizontal" className="me-auto ms-5">
             <Nav className="d-flex flex-wrap">
-              <Button className="bg-secondary rounded-0 py-3 border-light">Your Venues</Button>
-              <Button className="btn btn-secondary rounded-0 py-3 border-light">Your Bookings</Button>
+              <Button disabled className="btn btn-primary rounded-0 py-3 border-0">
+                Your Venues
+              </Button>
+              <Button className="btn btn-primary rounded-0 py-3 border-0">Your Bookings</Button>
             </Nav>
           </Stack>
         </Navbar>
       </Row>
+      <Row></Row>
     </Container>
   );
 }
