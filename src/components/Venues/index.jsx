@@ -1,23 +1,21 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import VenueFilters from "./VenueFilters";
 import RenderVenues from "./RenderVenues";
 import { Helmet } from "react-helmet";
 
 function Venues() {
   return (
-    <main>
-      <Container>
-        <Helmet title="Home | Holidaze" />
-        <Container fluid className="bg-secondary bg-gradient py-5 mb-5">
+    <Container>
+      <Helmet title="Home | Holidaze" />
+      <main>
+        <div fluid className="bg-secondary bg-gradient py-5 mb-5">
           <h1 className="text-white text-center">Browse Venues</h1>
-        </Container>
-        <Container>
-          <VenueFilters />
-        </Container>
+        </div>
+        <VenueFilters />
         <RenderVenues />
-      </Container>
-    </main>
+      </main>
+    </Container>
   );
 }
 
