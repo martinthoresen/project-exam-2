@@ -6,7 +6,6 @@ import { loadKey } from "../storage/localStorage";
  */
 
 function useApi(url) {
-  const token = loadKey("accessToken");
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -16,6 +15,7 @@ function useApi(url) {
       try {
         setIsLoading(true);
         setIsError(false);
+        const token = loadKey("accessToken");
         const headerData = {
           method: "GET",
           headers: {
