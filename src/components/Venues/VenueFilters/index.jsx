@@ -3,8 +3,8 @@ import { Button, Col, Container, Form, InputGroup, Row, Stack } from "react-boot
 
 function VenueFilters() {
   return (
-    <Form>
-      <Row>
+    <Row>
+      <Form>
         <InputGroup as={Col} md="Row">
           <Form.Control placeholder="Ex. Condo, Beach" aria-label="Search Venues" />
           <Button variant="outline-secondary" id="button-search">
@@ -25,8 +25,8 @@ function VenueFilters() {
           <Form.Check type="switch" id="parking-switch" label="Parking" />
           <Form.Check type="switch" id="breakfast-switch" label="Breakfast" />
         </Form.Group>
-      </Row>
-    </Form>
+      </Form>
+    </Row>
   );
 }
 
