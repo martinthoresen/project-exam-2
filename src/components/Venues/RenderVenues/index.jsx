@@ -1,15 +1,15 @@
 import React from "react";
-import { Button, Card, Col, Container, Placeholder, Row } from "react-bootstrap";
+import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import useApi from "../../../hooks/useApi";
 import baseUrl from "../../../utility/constants/baseUrl";
 
 function RenderVenues() {
   let limit = 24;
   let offset = 0;
+
   const { data, isLoading, isError } = useApi(baseUrl + `/holidaze/venues?limit=${limit}&offset=${offset}`);
 
   const venues = data;
-
   if (isLoading) {
     return <Col></Col>;
   }
@@ -23,7 +23,7 @@ function RenderVenues() {
       <Row>
         {venues.map((venue) => (
           <Col className="col-12 col-sm-6 col-lg-3" key={venue.id}>
-            <a href="/" className="text-decoration-none">
+            <a href={`/venue/?id=${venue.id}`} className="text-decoration-none">
               <Card className="border-0 shadow-sm mb-3 rounded">
                 <Card.Body>
                   <Card.Img variant="top" src={venue.media} className="rounded card-img" onError={(event) => (event.target.src = "/images/no-image.jpg")} />
@@ -43,7 +43,6 @@ function RenderVenues() {
           </Col>
         ))}
       </Row>
-      <Button onClick={showMorePages}>Load More...</Button>
     </Container>
   );
 }
