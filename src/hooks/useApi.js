@@ -5,7 +5,7 @@ import { loadKey } from "../storage/localStorage";
  * An API Hook which makes the process of handling API calls more convenient
  */
 
-function useApi(url) {
+function useApi(url, method, body) {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -17,9 +17,10 @@ function useApi(url) {
         setIsError(false);
         const token = loadKey("accessToken");
         const headerData = {
-          method: "GET",
+          method: method,
           headers: {
             Authorization: `Bearer ${token}`,
+            body,
           },
         };
         const fetchedData = await fetch(url, headerData);
@@ -33,7 +34,7 @@ function useApi(url) {
     }
 
     getData();
-  }, [url]);
+  }, [url, method, body]);
   return { data, isLoading, isError };
 }
 

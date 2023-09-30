@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { useLocation } from "react-router-dom";
 import useApi from "../../hooks/useApi";
 import baseUrl from "../../utility/constants/baseUrl";
@@ -9,9 +9,16 @@ function Venue() {
   const useQuery = () => new URLSearchParams(useLocation().search);
   let query = useQuery();
   const venueId = query.get("id");
-
-  const { data, isLoading, isError } = useApi(baseUrl + `/holidaze/venues/${venueId}?_owner=true&_bookings=true`);
+  const endPoint = baseUrl + `/holidaze/venues/${venueId}?_owner=true&_bookings=true`;
+  const { data, isLoading, isError } = useApi(endPoint);
   const venueData = data;
+  let bookedDates = venueData.bookings;
+
+  let bookedDatesFrom = bookedDates?.map((element) => new Date(element.dateFrom));
+  let bookedDatesTo = bookedDates?.map((element) => new Date(element.dateTo));
+  let disabledDates = bookedDatesFrom?.map((e, i) => [e, bookedDatesTo[i]]);
+
+  console.log(disabledDates);
   if (isLoading) {
     return (
       <Container className="m-auto">
@@ -42,7 +49,6 @@ function Venue() {
       </Container>
     );
   }
-
   return (
     <Container className="m-auto">
       <main>
@@ -57,7 +63,7 @@ function Venue() {
             </p>
           </Row>
           <Row className="">
-            <BookingCalendar />
+            <BookingCalendar venueData={venueData} disabledDates={disabledDates} bookedDatesTo={bookedDatesTo} bookedDatesFrom={bookedDatesFrom} />
           </Row>
         </Col>
       </main>
