@@ -61,9 +61,11 @@ function Register() {
           <Form.Group className="mb-3">
             <Form.Check {...register("venueManager")} type="checkbox" label="Register as venue manager" />
           </Form.Group>
+
           <Button variant="primary" type="submit" className="w-100">
             Register
           </Button>
+          <div id="register-container"></div>
         </Form>
       </main>
     </div>
