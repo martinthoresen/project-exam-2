@@ -43,6 +43,7 @@ function Venue() {
             <Row>
               <h1>Error</h1>
               <p>There was an error loading the API.</p>
+              <a href="/">Back to Home</a>
             </Row>
           </Col>
         </main>
@@ -54,7 +55,10 @@ function Venue() {
       <main>
         <Col className="col-12">
           <Row>
-            <Image variant="fluid" className="h-25" src={venueData.media} />
+            <a href="/" className="link-primary my-4">
+              ...Back to Home
+            </a>
+            <Image variant="fluid" className="h-25" src={venueData.media} onError={(event) => (event.target.src = "/images/no-image.jpg")} />
           </Row>
           <Row>
             <h1 className="mb-3">{venueData.name}</h1>
