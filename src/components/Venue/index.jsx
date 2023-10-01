@@ -53,23 +53,21 @@ function Venue() {
   return (
     <Container className="m-auto">
       <main>
-        <Col className="col-12">
-          <Row>
-            <a href="/" className="link-primary my-4">
-              ...Back to Home
-            </a>
-            <Image variant="fluid" className="h-25" src={venueData.media} onError={(event) => (event.target.src = "/images/no-image.jpg")} />
-          </Row>
-          <Row>
-            <h1 className="mb-3">{venueData.name}</h1>
+        <Row className="col-9 m-auto">
+          <a href="/" className="link-primary my-4">
+            ...Back to Home
+          </a>
+          <Col className="col-12 mt-2">
+            <h1 className="">{venueData.name}</h1>
             <p>
               Managed by <span className="text-primary">{venueData.owner?.name}</span>
             </p>
-          </Row>
-          <Row className="">
+            <Image className="w-100 rounded mb-3" src={venueData.media} onError={(event) => (event.target.src = "/images/no-image.jpg")} />
+          </Col>
+          <Col className="">
             <BookingCalendar venueData={venueData} bookedDatesTo={bookedDatesTo} bookedDatesFrom={bookedDatesFrom} maxGuests={maxGuests} />
-          </Row>
-        </Col>
+          </Col>
+        </Row>
       </main>
     </Container>
   );

@@ -8,6 +8,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faKey } from "@fortawesome/free-solid-svg-icons";
 import { CheckIfLoggedIn } from "../../utility/checkIfLoggedIn";
 import ProfilePrompt from "./ProfilePrompt";
+import { format } from "date-fns";
+
+function formatDate(date) {
+  return format(date, "dd/MM/yyyy");
+}
 
 function Profile() {
   const isLoggedIn = CheckIfLoggedIn();
@@ -16,18 +21,24 @@ function Profile() {
   }
   const userCreds = loadKey("data");
   const userName = userCreds["name"];
-  const userData = useApi(baseUrl + `/holidaze/profiles/${userName}`);
-
+  const userData = useApi(baseUrl + `/holidaze/profiles/${userName}?_bookings=true`);
   let venueManagerButton;
 
   function RenderBookings() {
-    const bookingData = userData.data;
-    console.log(bookingData);
+    const bookingData = userData;
+    const bookingList = bookingData.data.bookings;
     if (bookingData._count?.bookings === 0) {
       return <p className="text-center my-5 h4 text-secondary">You have no current bookings.</p>;
-    } else {
-      console.log();
-    }
+    } else
+      return (
+        <Row>
+          {bookingList?.map((booking) => (
+            <p>
+              {Date(booking.dateFrom)} to {Date(booking.dateTo)}
+            </p>
+          ))}
+        </Row>
+      );
   }
   function VenueManagerBadge() {
     if (userData.data.venueManager) {

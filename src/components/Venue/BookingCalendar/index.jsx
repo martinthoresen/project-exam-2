@@ -2,7 +2,7 @@ import React, { useCallback, useState } from "react";
 import Calendar from "react-calendar";
 import "../../../calendar.css";
 import { differenceInDays, format, isSameDay, isWithinInterval } from "date-fns";
-import { Button, InputGroup, Row } from "react-bootstrap";
+import { Button, Col, InputGroup, Row } from "react-bootstrap";
 import postApi from "../../../post/postApi";
 import baseUrl from "../../../utility/constants/baseUrl";
 
@@ -26,12 +26,12 @@ function BookingCalendar(props) {
 
   function BookedDates() {
     return (
-      <Row>
+      <Col className="text-end">
         <h2>Bookings for this date:</h2>
         {disabledDatesFormatted?.map((date) => (
           <p> {date}</p>
         ))}
-      </Row>
+      </Col>
     );
   }
 
@@ -74,11 +74,13 @@ function BookingCalendar(props) {
   }
 
   return (
-    <div>
-      <Calendar className="rounded shadow" selectRange onChange={onChange} minDate={today} value={value} />
-      <SelectedDates />
+    <Col className="d-flex flex-wrap mb-3">
+      <div>
+        <Calendar className="rounded shadow" selectRange onChange={onChange} minDate={today} value={value} />
+        <SelectedDates />
+      </div>
       <BookedDates />
-    </div>
+    </Col>
   );
 }
 
