@@ -8,10 +8,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faKey } from "@fortawesome/free-solid-svg-icons";
 import { CheckIfLoggedIn } from "../../utility/checkIfLoggedIn";
 import ProfilePrompt from "./ProfilePrompt";
-import { format } from "date-fns";
+import { format, parseISO, toDate } from "date-fns";
 
 function formatDate(date) {
-  return format(date, "dd/MM/yyyy");
+  return format(date, "yyyy/MM/dd");
 }
 
 function Profile() {
@@ -32,10 +32,13 @@ function Profile() {
     } else
       return (
         <Row>
+          <h1 className="text-center bg-secondary py-2 text-white">Upcoming Bookings</h1>
           {bookingList?.map((booking) => (
-            <p>
-              {Date(booking.dateFrom)} to {Date(booking.dateTo)}
-            </p>
+            <Col className="my-3 col-12">
+              <p className="rounded text-secondary p-1 text-center h5">
+                {formatDate(parseISO(booking?.dateFrom))} to {formatDate(parseISO(booking?.dateTo))}
+              </p>
+            </Col>
           ))}
         </Row>
       );
