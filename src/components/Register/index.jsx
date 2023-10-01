@@ -1,6 +1,6 @@
 import baseUrl from "../../utility/constants/baseUrl";
 import registerUser from "../../auth/registerUser";
-import React, { useState } from "react";
+import React from "react";
 import { Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";

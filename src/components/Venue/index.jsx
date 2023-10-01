@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React from "react";
 import { useLocation } from "react-router-dom";
 import useApi from "../../hooks/useApi";
 import baseUrl from "../../utility/constants/baseUrl";
@@ -17,7 +17,7 @@ function Venue() {
   let bookedDatesFrom = bookedDates?.map((element) => new Date(element.dateFrom));
   let bookedDatesTo = bookedDates?.map((element) => new Date(element.dateTo));
   let disabledDates = bookedDatesFrom?.map((e, i) => [e, bookedDatesTo[i]]);
-
+  const maxGuests = venueData.maxGuests;
   console.log(disabledDates);
   if (isLoading) {
     return (
@@ -67,7 +67,7 @@ function Venue() {
             </p>
           </Row>
           <Row className="">
-            <BookingCalendar venueData={venueData} disabledDates={disabledDates} bookedDatesTo={bookedDatesTo} bookedDatesFrom={bookedDatesFrom} />
+            <BookingCalendar venueData={venueData} bookedDatesTo={bookedDatesTo} bookedDatesFrom={bookedDatesFrom} maxGuests={maxGuests} />
           </Row>
         </Col>
       </main>

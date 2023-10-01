@@ -7,10 +7,8 @@ import Spinner from "react-bootstrap/Spinner";
 function RenderVenues(props) {
   const { data, isLoading, isError } = useApi(baseUrl + `/holidaze/venues`);
   const venues = data;
-
-  if (props) {
-    const searchValue = props.searchValue;
-    const guestsValue = props.guestsValue;
+  const searchValue = props.searchValue;
+  if (searchValue) {
     console.log(venues);
     const filteredVenues = venues.filter((venue) => venue.name.toLowerCase().includes(searchValue) || venue.location.country.toLowerCase().includes(searchValue));
     return (
