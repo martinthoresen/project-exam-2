@@ -9,7 +9,8 @@ import Login from "./components/Login";
 import Profile from "./components/Profile";
 import Unauthorized from "./components/Unauthorized";
 import Venue from "./components/Venue";
-
+import ManageVenues from "./components/Profile/ManageVenues";
+import NewVenue from "./components/Profile/NewVenue";
 function App() {
   return (
     <div>
@@ -20,6 +21,8 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/manage" element={<ManageVenues />} />
+          <Route path="/profile/manage/create" element={<NewVenue />} />
           <Route path="/unauthorized" element={<Unauthorized />} />
           <Route path="*" element={<RouteNotFound />} />
         </Route>

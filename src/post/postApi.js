@@ -17,7 +17,7 @@ async function postApi(url, userData, container) {
     const json = await response.json();
 
     if (response.ok) {
-      displayMessage(container, "Success! Booking added.", "success");
+      displayMessage(container, "Success!", "success");
     } else {
       console.log(response);
       displayMessage(container, json.errors[0].message, "danger");

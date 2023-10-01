@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Col, Container, Image, Nav, Navbar, Row, Stack } from "react-bootstrap";
 import useApi from "../../hooks/useApi";
 import baseUrl from "../../utility/constants/baseUrl";
@@ -9,6 +9,7 @@ import { faKey } from "@fortawesome/free-solid-svg-icons";
 import { CheckIfLoggedIn } from "../../utility/checkIfLoggedIn";
 import ProfilePrompt from "./ProfilePrompt";
 import { format, parseISO, toDate } from "date-fns";
+import { Link } from "react-router-dom";
 
 function formatDate(date) {
   return format(date, "yyyy/MM/dd");
@@ -45,7 +46,6 @@ function Profile() {
   }
   function VenueManagerBadge() {
     if (userData.data.venueManager) {
-      venueManagerButton = <Button className="btn btn-primary rounded-0 py-3 border-0">Your Venues</Button>;
       return (
         <p className="bg-secondary text-white rounded p-1 d-inline-block">
           <FontAwesomeIcon icon={faKey} className="me-2" />
@@ -54,7 +54,15 @@ function Profile() {
       );
     }
   }
-
+  function VenueManagerButton() {
+    if (userData.data.venueManager) {
+      return (
+        <Link className="btn btn-primary rounded-0 py-3 border-0" to="/profile/manage">
+          Your Venues
+        </Link>
+      );
+    } else return null;
+  }
   return (
     <Container className="m-auto ">
       <ProfilePrompt />
@@ -73,8 +81,8 @@ function Profile() {
         <Navbar className="shadow p-0 rounded" variant="light">
           <Stack direction="horizontal" className=" m-auto ms-md-5">
             <Nav className="d-flex flex-wrap">
-              {venueManagerButton}
-              <Button className="btn btn-primary rounded-0 py-3 border-0">Your Bookings</Button>
+              <VenueManagerButton />
+              <Button className="btn btn-primary rounded-0 py-3 border-0 disabled">Your Bookings</Button>
             </Nav>
           </Stack>
         </Navbar>
