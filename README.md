@@ -1,40 +1,60 @@
 # Holidaze
 
-This is a front-end application for a booking agency named Holidaze.
-
-Built with:
-### React
-- react-calendar for the booking calendar
-### Bootstrap
-### Scss
-
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm i`
-Installs needed dependencies
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
 
 
-### `npm run build`
+## Description
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
+Holidaze is a web application for booking/managing venues. This is our delivery for the project exam at our second year at Noroff.
 
 
-### `sass --watch App.scss App.css`
 
-Import styles from Sass
+## Built With
+
+### Languages
+- ```HTML```
+- ```CSS```
+- ```JavaScript```
+- ### Frameworks
+- ```Bootstrap 5```
+- - ```React.js```
+- ```SASS/SCSS```
+
+
+
+## Getting Started
+
+### Installing
+
+
+1. Clone the repo:
+
+```bash
+git clone git@github.com:martinthoresen/project-exam-2.git
+```
+
+2. Install the dependencies:
+
+```bash
+- npm i
+```
+
+### Running
+
+
+```bash
+- npm run build
+- npm run watch
+```
+
+## Contributing
+
+If you wanna contribute to the project, make sure to open a PR so it can get reviewed.
+
+## Contact
+
+[Mail](mailto:martin2resen@gmail.com)
+
+[LinkedIn](https://www.linkedin.com/in/martinthoresen/)
 
 
